@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Hangman game</title>
+  </head>
+  <body>
+    <!-- 20 days code challenge - Project 6 - Hangman game -->
+
+    <h1>Classic Hangman Game</h1>
+    <p>Enter a letter by using your keyboard to find the hidden word.</p>
+    <div class="gameContainer" id="gameContainer">
+      <svg class="figureContainer">
+        <!-- gallows -->
+        <line x1="120" y1="40" x2="220" y2="40" />
+        <line x1="220" y1="40" x2="220" y2="90" />
+        <line x1="120" y1="40" x2="120" y2="300" />
+        <line x1="80" y1="300" x2="160" y2="300" />
+
+        <!-- hangman figure -->
+        <!-- head -->
+        <circle cx="220" cy="110" r="20" class="d-none" />
+
+        <!-- body -->
+        <line x1="220" y1="130" x2="220" y2="200" class="d-none" />
+
+        <!-- arms -->
+        <line x1="220" y1="140" x2="180" y2="170" class="d-none" />
+        <line x1="220" y1="140" x2="260" y2="170" class="d-none" />
+
+        <!-- legs -->
+        <line x1="220" y1="200" x2="180" y2="240" class="d-none" />
+        <line x1="220" y1="200" x2="260" y2="240" class="d-none" />
+      </svg>
+
+      <div class="wrongLettersContainer" id="wrongLettersContainer">
+        <div class="wrongLetters" id="wrongLetters">
+          <!-- <h4>WRONG!</h4>
+          <span>a,e,b,c</span> -->
+        </div>
+      </div>
+
+      <div class="secretWord" id="secretWord">
+
+      </div>
+    </div>
+
+    <!-- game messages -->
+    <div class="popupContainer" id="popupContainer">
+      <div class="popup">
+        <h2>YOU WON!</h2>
+        <button id="play">Play Again</button>
+      </div>
+    </div>
+
+    <!-- notifications -->
+    <div class="notificationsContainer" id="notificationsContainer">
+      <p>You have already entered this letter</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

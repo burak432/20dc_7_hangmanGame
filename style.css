@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #131313;
+  color: #fff;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.figureContainer {
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  fill: transparent;
+  width: 300px;
+  height: 350px;
+  transform: scale(80%);
+  transform: translateX(-30%);
+}
+
+.gameContainer {
+  position: relative;
+}
+.d-none {
+  display: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.wrongLettersContainer {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrongLetters span {
+  font-size: 20px;
+}
+
+.secretWord {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #fff;
+  font-size: 25px;
+  margin: 0 5px;
+  width: 20px;
+  height: 30px;
+}
+
+.popupContainer {
+  background-color: rgba(85, 85, 85, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  color: #fff;
+  background-color: #105fb9;
+  text-align: center;
+  padding: 10px 30px 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.7);
+}
+
+.popup button {
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  color: #105fb9;
+  cursor: pointer;
+}
+
+.notificationsContainer {
+  background-color: rgba(85, 85, 85, 0.4);
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+  position: absolute;
+  bottom: -90px;
+  transition: all 0.3s ease-in-out;
+}
+
+.notificationsContainer p {
+  margin: 0;
+  padding: 0;
+}
+
+.notificationsContainer.show {
+  transform: translateY(-90px);
+}
