@@ -8,7 +8,9 @@ const playBtn = document.querySelector("#play");
 // const figureContainer = document.querySelectorAll("#figureContainer")
 
 let wordsArr = ["javascript", "frontend", "software", "programming"];
-let correctLetters = ["a", "j", "s"];
+
+let correctLettersArr = ["j", "a", "v", "s", "c", "r", "i", "p", "t"];
+let wrongLettersArr = [];
 
 let randomWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
 
@@ -17,17 +19,59 @@ function displayWord() {
   ${randomWord
     .split("")
     .map(
-      (item) =>
-        `
+      (item) => `
       <span class="letter">
-      ${correctLetters.includes(item) ? item : " "}
+      ${correctLettersArr.includes(item) ? item : ""}
       </span>
       `
     )
-    .join(" ")}
+    .join("")}
     `;
 
-  console.log(secretWord.innerText);
+  const innerWord = secretWord.innerText.replace(/\n/g, "");
+
+  console.log(innerWord);
+
+  if (innerWord === randomWord) {
+    popupContainer.style.display = "flex";
+  }
 }
+
+//show notification function
+function showNotification() {
+  notificationsContainer.classList.add("show");
+  setTimeout(() => {
+    notificationsContainer.classList.remove("show");
+  }, 1500);
+}
+
+function updateWrongLettersEl() {
+  wrongLetters.innerHTML = `
+${wrongLettersArr.length > 0 ? "<p>Wrong</p>" : ""}
+${wrongLettersArr.map((item) => `<span>${item}</span>`)}
+`;
+}
+
+//key press event
+window.addEventListener("keydown", (e) => {
+  if (e.keyCode >= 65 && e.keyCode <= 90) {
+    const letter = e.key;
+    if (randomWord.includes(letter)) {
+      if (!correctLettersArr.includes(letter)) {
+        correctLettersArr.push(letter);
+        displayWord();
+      } else {
+        showNotification();
+      }
+    } else {
+      if (!wrongLettersArr.includes(letter)) {
+        wrongLettersArr.push(letter);
+        updateWrongLettersEl();
+      } else {
+        showNotification();
+      }
+    }
+  }
+});
 
 displayWord();
