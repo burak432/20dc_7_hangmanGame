@@ -22,18 +22,18 @@
 
         <!-- hangman figure -->
         <!-- head -->
-        <circle cx="220" cy="110" r="20" class="d-none" />
+        <circle cx="220" cy="110" r="20" class="d-none figurePart" />
 
         <!-- body -->
-        <line x1="220" y1="130" x2="220" y2="200" class="d-none" />
+        <line x1="220" y1="130" x2="220" y2="200" class="d-none figurePart" />
 
         <!-- arms -->
-        <line x1="220" y1="140" x2="180" y2="170" class="d-none" />
-        <line x1="220" y1="140" x2="260" y2="170" class="d-none" />
+        <line x1="220" y1="140" x2="180" y2="170" class="d-none figurePart" />
+        <line x1="220" y1="140" x2="260" y2="170" class="d-none figurePart" />
 
         <!-- legs -->
-        <line x1="220" y1="200" x2="180" y2="240" class="d-none" />
-        <line x1="220" y1="200" x2="260" y2="240" class="d-none" />
+        <line x1="220" y1="200" x2="180" y2="240" class="d-none figurePart" />
+        <line x1="220" y1="200" x2="260" y2="240" class="d-none figurePart" />
       </svg>
 
       <div class="wrongLettersContainer" id="wrongLettersContainer">
@@ -51,7 +51,7 @@
     <!-- game messages -->
     <div class="popupContainer" id="popupContainer">
       <div class="popup">
-        <h2>YOU WON!</h2>
+        <h2 id="endMsg"></h2>
         <button id="play">Play Again</button>
       </div>
     </div>

@@ -4,12 +4,14 @@ const popupContainer = document.querySelector("#popupContainer");
 const notificationsContainer = document.querySelector(
   "#notificationsContainer"
 );
+const endMsg = document.querySelector("#endMsg");
+const figureParts = document.querySelectorAll(".figurePart");
 const playBtn = document.querySelector("#play");
 // const figureContainer = document.querySelectorAll("#figureContainer")
 
 let wordsArr = ["javascript", "frontend", "software", "programming"];
 
-let correctLettersArr = ["j", "a", "v", "s", "c", "r", "i", "p", "t"];
+let correctLettersArr = [];
 let wrongLettersArr = [];
 
 let randomWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
@@ -34,6 +36,7 @@ function displayWord() {
 
   if (innerWord === randomWord) {
     popupContainer.style.display = "flex";
+    endMsg.innerText = "YOU WON";
   }
 }
 
@@ -46,10 +49,27 @@ function showNotification() {
 }
 
 function updateWrongLettersEl() {
+  // displayingwrong letters
   wrongLetters.innerHTML = `
 ${wrongLettersArr.length > 0 ? "<p>Wrong</p>" : ""}
 ${wrongLettersArr.map((item) => `<span>${item}</span>`)}
 `;
+
+  //displaying hangman parts
+  figureParts.forEach((part, index) => {
+    const errors = wrongLettersArr.length;
+    if (index < errors) {
+      part.style.display = "block";
+    } else {
+      part.style.display = "none";
+    }
+  });
+
+  //check if game is over
+  if (figureParts.length === wrongLettersArr.length) {
+    popupContainer.style.display = "flex";
+    endMsg.innerText = "YOU LOST";
+  }
 }
 
 //key press event
@@ -72,6 +92,16 @@ window.addEventListener("keydown", (e) => {
       }
     }
   }
+});
+
+//play button event
+playBtn.addEventListener("click", () => {
+  correctLettersArr = [];
+  wrongLettersArr = [];
+  let randomWord = wordsArr[Math.floor(Math.random() * wordsArr.length)];
+  displayWord();
+  updateWrongLettersEl();
+  popupContainer.style.display = "none";
 });
 
 displayWord();
